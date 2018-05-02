@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('slug')->unique();
             $table->string('title');
-            $table->text('content')->default('');
+            $table->longtext('content');
             $table->string('password')->nullable();
             $table->enum('status', ['draft', 'publish', 'private', 'trash'])->default('draft');
             $table->enum('visibility', ['publish', 'private', 'password_protected'])->default('publish');
