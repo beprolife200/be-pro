@@ -4,6 +4,7 @@ namespace BePro\Post;
 
 use Illuminate\Database\Eloquent\Model;
 use BePro\Series\Series;
+use BePro\Tag\Tag;
 use BePro\Video\Video;
 class Post extends Model
 {
@@ -48,6 +49,11 @@ class Post extends Model
     public function videos()
     {
         return $this->morphToMany(Video::class, 'videoable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'tagable');
     }
 
     // public function setSlugAttribute($value)

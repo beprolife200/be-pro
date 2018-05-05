@@ -38,4 +38,15 @@ class PostTest extends TestCase
         ]);
         $this->assertNotEmpty($post->series);
     }
+
+    /** @test */
+    public function post_can_has_many_tags()
+    {
+        $post = factory('BePro\Post\Post')->create();
+        $tags = factory('BePro\Tag\Tag', 3)->create();
+        foreach($tags as $tag) {
+            $post->tags()->save($tag);
+        }
+        $this->assertCount(3, $post->tags);
+    }
 }

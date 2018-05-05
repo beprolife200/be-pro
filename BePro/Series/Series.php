@@ -14,13 +14,18 @@ class Series extends Model
         'name', 'slug', 'description', 'cover_image','visibility'
     ];
 
-    public function categories()
-    {
-        return $this->morphToMany('BePro\Category\Category', 'categoryable');
-    }
-
     public function posts()
     {
         return $this->hasMany(Post::calss);
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany('BePro\Tag\Tag', 'tagable');
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany('BePro\Category\Category', 'categoryable');
     }
 }

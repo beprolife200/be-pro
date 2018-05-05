@@ -18,4 +18,16 @@ class SeriesTest extends TestCase
         $series->categories()->save($category);
         $this->assertNotEmpty($series->categories);
     }
+
+
+    /** @test */
+    public function series_can_has_many_tags()
+    {
+        $series = factory('BePro\Series\Series')->create();
+        $tags = factory('BePro\Tag\Tag', 3)->create();
+        foreach($tags as $tag) {
+            $series->tags()->save($tag);
+        }
+        $this->assertCount(3, $series->tags);
+    }
 }
