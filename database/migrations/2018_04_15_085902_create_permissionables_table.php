@@ -14,7 +14,6 @@ class CreatePermissionablesTable extends Migration
     public function up()
     {
         Schema::create('permissionables', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('permission_id');
             $table->unsignedInteger('permissionable_id');
             $table->string('permissionable_type');

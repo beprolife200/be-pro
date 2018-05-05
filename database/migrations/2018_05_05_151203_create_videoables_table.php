@@ -14,7 +14,6 @@ class CreateVideoablesTable extends Migration
     public function up()
     {
         Schema::create('videoables', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('video_id');
             $table->unsignedInteger('videoable_id');
             $table->string('videoable_type');
