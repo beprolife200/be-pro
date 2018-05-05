@@ -15,14 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('Flash', require('./components/Flash.vue'));
-Vue.component('markdown-parser', require('./components/MarkdownParser.vue'));
+Vue.component('Flash', require('@components/Flash.vue'))
+Vue.component('Paper', require('@components/Paper.vue'))
+Vue.component('MarkdownParser', require('@components/MarkdownParser.vue'))
 
-const app = new Vue({
-    el: '#app',
-    data: {
-        markdown: {
-            content: ''
-        }
-    }
-});

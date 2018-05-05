@@ -1,0 +1,38 @@
+
+
+@each $display in $displaies {
+    .d-#{$display} {
+        display: $display;
+    }
+}
+
+@each $align in $flex-aligns {
+    .align-items-#{$align} {
+        align-items: $align !important;
+    }
+    .justify-content-#{$align} {
+        justify-content: $align !important;
+    }
+}
+
+@each $margin, $val in $margins {
+    @each $spacer, $value in $spacers {
+        .m#{$margin}-#{$spacer} {
+            margin#{$val}: #{$value} !important;
+        }
+    }
+}
+
+@each $padding, $val in $paddings {
+    @each $spacer, $value in $spacers {
+        .p#{$padding}-#{$spacer} {
+            padding#{$val}: #{$value} !important;
+        }
+    }
+}
+
+@each $align in $text-aligns {
+    .text-#{$align} {
+        text-align: $align !important;
+    }
+}

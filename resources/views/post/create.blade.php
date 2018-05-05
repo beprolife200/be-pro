@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+@section('page-name', 'page__post-create') 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
             <div class="card">
-                <div class="card-header">Post Create</div>
+                <div class="card-header">New Post</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -13,13 +13,13 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('post-store') }}" method="post">
+                    <form ref="createPostForm" action="{{ route('post-store') }}" method="post" @submit.prevent="submitPost">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <input type="title" name="title" class="form-control" placeholder="Post title">
                         </div>
                         <div class="form-group">
-                            <textarea name="content" v-model="markdown.content" class="form-control" cols="30" rows="10" placeholder="Post content."></textarea>
+                            <paper v-model="markdown.content"></paper>
                         </div>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -33,4 +33,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('js/post-create.js') }}"></script>
 @endsection

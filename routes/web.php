@@ -11,8 +11,11 @@
 |
 */
 
+use BePro\Post\Post;
+
 Route::get('/', function () {
-    return view('welcome');
+    $posts = Post::orderBy('created_at', 'dest')->get();
+    return view('welcome')->with('posts', $posts);
 });
 
 Auth::routes();

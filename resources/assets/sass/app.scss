@@ -1,15 +1,48 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
 // Variables
 @import "variables";
+@import "mixins";
+@import "foundation";
+@import "grid";
+@import "tools";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~animate.css/animate.css';
+.site-nav {
+    flex: none;
+    &__logo {
+        width: 270px;
+        height: 90px;
+        text-align: center;
+        line-height: 90px;
+        font-weight: 400;
+        font-size: 2.5rem;
+        margin: 0 auto;
+        color: #fff;
+        background-color: $primary;
+    }
+    &__list {
+        @include clearfix;
+        &__item {
+            float: left;
+            list-style: none;
+            padding: .5rem .75rem;
+        }
+    }
+}
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.site-main {
+    flex: auto;
+}
+
+.site-footer {
+    color: $gray-100;
+    flex: none;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    align-self: flex-end;
+    a {
+        color: lighten($primary, 10%);
+    }
 }

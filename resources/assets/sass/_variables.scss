@@ -1,8 +1,24 @@
-
+// Color
+$primary: #838B6D;
+$dark: #3b4446;
+$gray-100: #aeb6b8;
+$gray-200: #7b868a;
+$gray-300: #525e61;
 // Body
-$body-bg: #f5f8fa;
-
+$body-bg: #fefefe;
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
+// stylelint-disable
+$spacer: 1rem !default;
+$font-family-sans-serif: ('cwTeXYen', sans-serif);
+$font-size-base: $spacer;
 $line-height-base: 1.6;
+// for _tools.scss compile
+$breakpoints: ('phone' 768px, 'tablet' 1024px, 'desktop' 1200);
+$screen-size: ('phone' 100%, 'tablet' 100%, 'desktop' 1000px);
+$spacers: () !default;
+$spacers: map-merge(( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3: $spacer, 4: ($spacer * 1.5), 5: ($spacer * 3)), $spacers);
+$displaies: (block, inline, inline-block, flex, inline-flex, grid, table);
+$text-aligns: (left, center, right);
+$flex-aligns: (start, center, end, around, between);
+$margins: ('' '', 'l' '-left', 'r' '-right', 't' '-top', 'b' '-bottom');
+$paddings: ('' '', 'l' '-left', 'r' '-right', 't' '-top', 'b' '-bottom');

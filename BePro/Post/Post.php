@@ -29,6 +29,16 @@ class Post extends Model
         return $this->belongsTo('BePro\User\User', 'user_id');
     }
 
+    public function path()
+    {
+        return '/posts/' . $this->slug;
+    }
+
+    public function edit()
+    {
+        return '/posts/' . $this->slug . '/edit';
+    }
+
     // public function setSlugAttribute($value)
     // {
     //     $slug = str_slug($value);
