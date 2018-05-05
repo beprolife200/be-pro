@@ -3,7 +3,8 @@
 namespace BePro\Post;
 
 use Illuminate\Database\Eloquent\Model;
-
+use BePro\Series\Series;
+use BePro\Video\Video;
 class Post extends Model
 {
     protected $fillable = [
@@ -37,6 +38,16 @@ class Post extends Model
     public function edit()
     {
         return '/posts/' . $this->slug . '/edit';
+    }
+
+    public function series()
+    {
+        return $this->belongsTo(Series::class);
+    }
+
+    public function videos()
+    {
+        return $this->morphToMany(Video::class, 'videoable');
     }
 
     // public function setSlugAttribute($value)

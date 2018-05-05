@@ -19,6 +19,6 @@ class Permission extends Model
 
     protected function groups()
     {
-        return $this->morphedByMany('BePro\User\User', 'permissionable');
+        return $this->morphedByMany('BePro\Group\Group', 'permissionable');
     }
 }
