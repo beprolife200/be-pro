@@ -21,6 +21,11 @@ new Vue({
             formData.append('content', this.markdown.content)
             await axios.post('/posts', formData)
             window.location.href = '/'
+        },
+
+        getPost(postSlug) {
+            axios.get('/api/posts/' + postSlug)
+                .then(res => console.log(res))
         }
     }
 })

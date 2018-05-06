@@ -16,6 +16,5 @@ window.Vue = require('vue');
  */
 
 Vue.component('Flash', require('@components/Flash.vue'))
-Vue.component('Paper', require('@components/Paper.vue'))
 Vue.component('MarkdownParser', require('@components/MarkdownParser.vue'))
 

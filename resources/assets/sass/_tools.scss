@@ -36,3 +36,13 @@
         text-align: $align !important;
     }
 }
+
+@each $position in $positions {
+    .#{$position} {
+        position: #{$position};
+    }
+}
+
+.pointer {
+    cursor: pointer !important;
+}

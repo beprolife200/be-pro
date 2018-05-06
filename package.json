@@ -18,7 +18,8 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "popper.js": "^1.12",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "vuex": "^3.0.1"
     },
     "dependencies": {
         "prismjs": "^1.14.0"

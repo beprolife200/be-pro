@@ -1,15 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    Preview
-                </div>
-                <div class="card-body">
-                    <div v-html="markdown"></div>
-                </div>
-            </div>
-        </div>
+        <div v-html="markdown"></div>
     </div>
 </template>
 
@@ -35,12 +26,22 @@ export default {
         }
     },
 
+    created() {
+        this.parse()
+    },
+
     watch: {
-        value: throttle(async function () {
+        value: throttle(function () {
+            this.parse()
+        }, 1000)
+    },
+
+    methods: {
+        async parse() {
             const res = await window.axios.post('/api/markdown', { content: this.value })
             this.markdown = res.data.body
             this.$nextTick(() => Prism.highlightAll())
-        }, 1000)
+        }
     }
 }
 </script>

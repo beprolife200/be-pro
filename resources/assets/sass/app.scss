@@ -1,11 +1,16 @@
 // Fonts
 @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+@import "~animate.css/animate.css";
 // Variables
 @import "variables";
 @import "mixins";
 @import "foundation";
 @import "grid";
+@import "form";
 @import "tools";
+
+@import "./pages/home";
 
 .site-nav {
     flex: none;

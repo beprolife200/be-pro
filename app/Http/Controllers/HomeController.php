@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use BePro\Post\Post;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = Post::where('user_id', auth()->user()->id)
+            ->orderBy('created_at', 'desc')    
+            ->paginate(15);
+        return view('home')->with('posts', $posts);
     }
 }

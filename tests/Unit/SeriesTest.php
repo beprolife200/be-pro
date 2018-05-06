@@ -19,15 +19,25 @@ class SeriesTest extends TestCase
         $this->assertNotEmpty($series->categories);
     }
 
-
     /** @test */
     public function series_can_has_many_tags()
     {
         $series = factory('BePro\Series\Series')->create();
         $tags = factory('BePro\Tag\Tag', 3)->create();
-        foreach($tags as $tag) {
+        foreach ($tags as $tag) {
             $series->tags()->save($tag);
         }
         $this->assertCount(3, $series->tags);
+    }
+
+    /** @test */
+    public function user_can_get_serieses_json()
+    {
+        $serieses = factory('BePro\Series\Series', 5)->create();
+        $response = $this->json('GET', '/api/series');
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [],
+            ]);
     }
 }

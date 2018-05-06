@@ -11,11 +11,11 @@
                     <li class="list-group-item d-flex justify-content-between">
                         <a href="{{ $post->path() }}">{{$post->title}}</a>
                         <span>
-                                <small>created at {{ $post->created_at->diffForHumans() }}</small>
-                                <a href="{{ $post->edit() }}">
-                                    <i class="ml-2 fas fa-edit"></i>
-                                </a>
-                            </span>
+                            <small>created at {{ $post->created_at->diffForHumans() }}</small>
+                            <a href="{{ $post->edit() }}">
+                                <i class="ml-2 fas fa-edit"></i>
+                            </a>
+                        </span>
                     </li>
                     @endforeach
                 </ul>

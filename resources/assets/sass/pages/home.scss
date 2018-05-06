@@ -1,0 +1,24 @@
+.page__home {
+    .editor-container {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .new-post-panel {
+        right: 0;
+        top: 100%;
+        width: 400px;
+        padding: 1rem;
+        text-align: left;
+        position: absolute;
+        border-radius: 2px;
+        box-shadow: 0 0 60px -10px #777;
+        background: rgba(255, 255, 255, 0.99);
+    }
+}

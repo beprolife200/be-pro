@@ -15,26 +15,14 @@
 <body class="@yield('page-name')">
     <nav class="site-nav">
         <div class="site-nav__logo">BePro.Life</div>
-        <ul class="site-nav__list p-0 d-flex align-items-center justify-content-center">
-            <li class="site-nav__list__item">
-                <a href="#">分類</a>
-            </li>
-            <li class="site-nav__list__item">
-                <a href="#">標籤</a>
-            </li>
-            <li class="site-nav__list__item">
-                <a href="#">搜尋</a>
-            </li>
-        </ul>
-        <hr>
     </nav>
 
-    <main class="site-main">
+    <main id="app" class="site-main">
         @yield('content')
     </main>
 
     <footer class="site-footer text-center">
-            Copyright &copy; 2018. <a href="#">BePro.Life</a> 
+        Copyright &copy; 2018. <a href="#">BePro.Life</a> 
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
