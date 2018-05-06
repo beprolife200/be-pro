@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->text('description')->default('');
+            $table->text('description');
             $table->string('cover_image')->nullable();
             $table->enum('visibility', ['publish', 'private', 'password_protected'])->default('publish');
             $table->timestamps();

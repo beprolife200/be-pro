@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->longtext('content');
-            $table->text('description')->default('');
+            $table->text('description');
             $table->string('password')->nullable();
             $table->string('cover_image')->nullable();
             $table->enum('creation', ['original', 'translation'])->default('original');
