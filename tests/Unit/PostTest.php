@@ -44,9 +44,28 @@ class PostTest extends TestCase
     {
         $post = factory('BePro\Post\Post')->create();
         $tags = factory('BePro\Tag\Tag', 3)->create();
-        foreach($tags as $tag) {
+        foreach ($tags as $tag) {
             $post->tags()->save($tag);
         }
         $this->assertCount(3, $post->tags);
+    }
+
+    /** @test */
+    public function post_can_be_update()
+    {
+        $post = factory('BePro\Post\Post')->create();
+        $testTitle = 'testing_title';
+        $data = [
+            'id' => $post->id,
+            'title' => $testTitle,
+        ];
+        $response = $this->json('PUT', '/api/posts/' . $post->slug, $data);
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'id' => $post->id,
+                    'title' => $testTitle
+                ]
+            ]);
     }
 }

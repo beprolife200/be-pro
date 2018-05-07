@@ -24,12 +24,25 @@ class PostController extends Controller
         $post = $this->postRepository->createPost($data);
         return redirect()->route('post-show', ['post' => $post->slug]);
     }
-    
+
     public function ajaxStore()
     {
         $data = request()->all();
-        $post = $this->postRepository->createPost($data); 
-        return response()->json(['message' => 'create post success.']);
+        $post = $this->postRepository->createPost($data);
+        return response()->json([
+            'message' => 'create post success.',
+            'data' => $post
+        ]);
+    }
+
+    public function ajaxUpdate()
+    {
+        $data = request()->all();
+        $post = $this->postRepository->updatePost($data);
+        return response()->json([
+            'message' => 'update post success.',
+            'data' => $post
+        ]);
     }
 
     public function show(Post $post)

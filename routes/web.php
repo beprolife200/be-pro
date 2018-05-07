@@ -30,5 +30,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'posts'], function () {
         Route::get('{post}', 'PostController@getPost');
         Route::post('', 'PostController@ajaxStore');
+        Route::put('{post}', 'PostController@ajaxUpdate');
     });
 });

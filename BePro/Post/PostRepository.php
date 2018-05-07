@@ -6,14 +6,18 @@ class PostRepository
 {
     public function createPost(array $data)
     {
-        $title = $data['title'];
-        $post = new Post;
-        $post->user_id = auth()->user()->id;
-        $post->title = $title;
-        $post->slug = str_slug($title);
-        $post->content = $data['content'];
-        $post->password = isset($data['password']) ? $data['password'] : null;
-        $post->save();
+        $data['user_id'] = auth()->user()->id;
+        if (!isset($data['slug'])) {
+            $data['slug'] = str_slug($data['title']);
+        }
+        $post = Post::create($data);
+        return $post;
+    }
+
+    public function updatePost($data)
+    {
+        $post = Post::find($data['id']);
+        $post->update($data);
         return $post;
     }
 }
