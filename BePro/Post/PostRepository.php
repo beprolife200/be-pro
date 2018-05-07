@@ -11,6 +11,7 @@ class PostRepository
         }
         $post = Post::make($data);
         $post->user_id = auth()->user()->id;
+        $post->save();
         return $post;
     }
 
