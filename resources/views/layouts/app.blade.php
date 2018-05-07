@@ -25,6 +25,9 @@
         Copyright &copy; 2018. <a href="#">BePro.Life</a> 
     </footer>
 
+    <div class="notification-panel">
+        <alert-panel></alert-panel>
+    </div>
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')
 </body>

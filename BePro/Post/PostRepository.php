@@ -6,11 +6,11 @@ class PostRepository
 {
     public function createPost(array $data)
     {
-        $data['user_id'] = auth()->user()->id;
         if (!isset($data['slug'])) {
             $data['slug'] = str_slug($data['title']);
         }
-        $post = Post::create($data);
+        $post = Post::make($data);
+        $post->user_id = auth()->user()->id;
         return $post;
     }
 

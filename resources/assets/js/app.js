@@ -5,16 +5,16 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-
 window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('Flash', require('@components/Flash.vue'))
+Vue.prototype.$eventHub = window.$eventHub = new Vue
+require('./bootstrap');
+window.store = require('./store')
 Vue.component('MarkdownParser', require('@components/MarkdownParser.vue'))
 
+
+new Vue({
+    el: '.notification-panel',
+    components: {
+        AlertPanel: require('@components/AlertPanel.vue')
+    }
+})

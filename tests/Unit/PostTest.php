@@ -55,16 +55,19 @@ class PostTest extends TestCase
     {
         $post = factory('BePro\Post\Post')->create();
         $testTitle = 'testing_title';
+        $coverImageUrl = 'https://this/is/test/url.png';
         $data = [
             'id' => $post->id,
             'title' => $testTitle,
+            'cover_image' => $coverImageUrl
         ];
         $response = $this->json('PUT', '/api/posts/' . $post->slug, $data);
         $response->assertStatus(200)
             ->assertJson([
                 'data' => [
                     'id' => $post->id,
-                    'title' => $testTitle
+                    'title' => $testTitle,
+                    'cover_image' => $coverImageUrl
                 ]
             ]);
     }

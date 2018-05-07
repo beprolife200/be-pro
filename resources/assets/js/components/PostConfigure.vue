@@ -7,7 +7,7 @@
             </div>
             <div class="form-group">
                 <label for="postImage">封面</label>
-                <input v-model="post.cover_image" type="text" name="cover_image" id="postImage" placeholder="圖片 URL">
+                <input v-model="post.cover_image" type="text" name="cover_image" id="postImage" placeholder="圖片 URL" autocomplete="off">
             </div>
             <div class="form-group">
                 <label for="postDescription">說明</label>
@@ -41,7 +41,7 @@
                     <input v-model="post.visibility" type="radio" id="postVisibilityPasswordProtected" name="visibility" value="password_protected">
                     <span>密碼保護</span>
                 </label>
-                <input v-show="isProtectedPost" v-model="post.password" type="text" name="password" id="postPassword" placeholder="密碼">
+                <input v-show="isProtectedPost" v-model="post.password" type="password" name="password" id="postPassword" placeholder="密碼">
             </div>
             <div class="form-group">
                 <label for="postStatus">狀態</label>
@@ -83,7 +83,7 @@
         </div>
         <hr>
         <div class="post-configure__group text-center">
-            <button @click="save">儲存</button>
+            <button @click="objective === 'update' ? update() : save()">儲存</button>
         </div>
     </div>
 </template>
@@ -128,9 +128,14 @@ export default {
                 .then(res => this.serieses = res.data.data)
         },
 
+        update() {
+            axios.put('/api/posts/' + this.post.slug, this.post)
+                .then(res => this.$eventHub.$emit('alert', { level: 'success', message: res.data.message, ms: 5000 }))
+        },
+
         save() {
             axios.post('/api/posts', this.post)
-                .then(res => console.log(res))
+                .then(res => this.$eventHub.$emit('alert', { level: 'success', message: res.data.message, ms: 5000 }))
         }
     }
 }

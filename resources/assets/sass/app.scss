@@ -12,6 +12,13 @@
 
 @import "./pages/home";
 
+.notification-panel {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: $zindex-modal;
+}
+
 .site-nav {
     flex: none;
     &__logo {

@@ -9,7 +9,7 @@ use BePro\Video\Video;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'description', 'content', 'password', 'status', 'visibility', 'published_at', 'modified_at'
+        'title', 'slug', 'series_id', 'cover_image', 'description', 'content', 'password', 'status', 'visibility', 'published_at', 'modified_at'
     ];
 
     protected static function boot()

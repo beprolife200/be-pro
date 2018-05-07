@@ -4006,6 +4006,13 @@ hr {
   background: rgba(255, 255, 255, 0.99);
 }
 
+.notification-panel {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1050;
+}
+
 .site-nav {
   -webkit-box-flex: 0;
       -ms-flex: none;

@@ -12,6 +12,14 @@ $spacer: 1rem !default;
 $font-family-sans-serif: ('cwTeXYen', sans-serif);
 $font-size-base: $spacer;
 $line-height-base: 1.6;
+// zindex
+$zindex-dropdown:                   1000 !default;
+$zindex-sticky:                     1020 !default;
+$zindex-fixed:                      1030 !default;
+$zindex-modal-backdrop:             1040 !default;
+$zindex-modal:                      1050 !default;
+$zindex-popover:                    1060 !default;
+$zindex-tooltip:                    1070 !default;
 // for _tools.scss compile
 $breakpoints: ('phone' 768px, 'tablet' 1024px, 'desktop' 1200);
 $screen-size: ('phone' 100%, 'tablet' 100%, 'desktop' 1000px);
