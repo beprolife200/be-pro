@@ -83,12 +83,14 @@
         </div>
         <hr>
         <div class="post-configure__group text-center">
-            <button @click="objective === 'update' ? update() : save()">儲存</button>
+            <button @click="objective === 'update' ? save() : store()">儲存</button>
         </div>
     </div>
 </template>
 
 <script>
+
+import { trigger } from '@js/utils'
 export default {
 
     name: 'PostConfigure',
@@ -128,14 +130,12 @@ export default {
                 .then(res => this.serieses = res.data.data)
         },
 
-        update() {
-            axios.put('/api/posts/' + this.post.slug, this.post)
-                .then(res => this.$eventHub.$emit('alert', { level: 'success', message: res.data.message, ms: 5000 }))
+        save() {
+            trigger('save-post', this.post)
         },
 
-        save() {
-            axios.post('/api/posts', this.post)
-                .then(res => this.$eventHub.$emit('alert', { level: 'success', message: res.data.message, ms: 5000 }))
+        store() {
+            trigger('store-post', this.post)
         }
     }
 }

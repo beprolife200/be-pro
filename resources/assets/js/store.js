@@ -1,10 +1,10 @@
 
-const Vue  = require('vue')
-const Vuex = require('vuex')
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+window.store = new Vuex.Store({
     state: {
         user: null
     },
@@ -14,5 +14,3 @@ const store = new Vuex.Store({
         }
     }
 })
-
-module.exports = store

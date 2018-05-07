@@ -21,18 +21,19 @@
 </template>
 <script>
 
-import EditorHotKeyMixin from '@mixins/EditorHotKeyMixin'
+import { alert } from '@js/utils'
 import PostTool from '@components/PostTool'
+import EditorHotKeyMixin from '@mixins/EditorHotKeyMixin'
 
 export default {
     name: 'PoseEditor',
-    
+
     props: ['post'],
 
     mixins: [
         EditorHotKeyMixin
     ],
-    
+
     components: {
         PostTool
     },
@@ -51,21 +52,13 @@ export default {
 
         updateMarkdownContent(content) {
             this.markdown.content = content
-        },
-
-        async submitPost() {
-            const formData = new FormData(this.$refs['createPostForm'])
-            formData.append('content', this.markdown.content)
-            await axios.post('/posts', formData)
-            window.location.href = '/'
-        },
+        }
     }
 }
 </script>
 
 <style lang="scss">
-
-@import '../../sass/variables';
+@import "../../sass/variables";
 
 .post-editor {
   width: 100%;
@@ -75,8 +68,8 @@ export default {
   align-items: stretch;
   justify-content: center;
   &__tool {
-      flex: none;
-      width: 100%;
+    flex: none;
+    width: 100%;
   }
   &__paper {
     flex: 1 0 50%;
@@ -92,8 +85,9 @@ export default {
       line-height: 1.5;
     }
 
-    input, textarea {
-        background-color: transparent;
+    input,
+    textarea {
+      background-color: transparent;
     }
   }
   &__preview {
