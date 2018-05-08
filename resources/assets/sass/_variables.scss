@@ -21,13 +21,19 @@ $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 // for _tools.scss compile
-$breakpoints: ('phone' 768px, 'tablet' 1024px, 'desktop' 1200);
-$screen-size: ('phone' 100%, 'tablet' 100%, 'desktop' 1000px);
+$breakpoints: ('xs': 768px, 'md': 1024px);
+$screen-size: ('xs': 100%, 'md': 100%);
 $spacers: () !default;
 $spacers: map-merge(( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3: $spacer, 4: ($spacer * 1.5), 5: ($spacer * 3)), $spacers);
 $displaies: (block, inline, inline-block, flex, inline-flex, grid, table);
 $text-aligns: (left, center, right);
-$flex-aligns: (start, center, end, space-around, space-between);
+$flex-aligns: (
+    'start': flex-start,
+    'center': center,
+    'end': flex-end,
+    'around': space-around,
+    'between': space-between
+);
 $margins: ('' '', 'l' '-left', 'r' '-right', 't' '-top', 'b' '-bottom');
 $paddings: ('' '', 'l' '-left', 'r' '-right', 't' '-top', 'b' '-bottom');
 $positions: (relative, absolute, fixed, static);

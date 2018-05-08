@@ -41,7 +41,10 @@
                     <input v-model="post.visibility" type="radio" id="postVisibilityPasswordProtected" name="visibility" value="password_protected">
                     <span>密碼保護</span>
                 </label>
-                <input v-show="isProtectedPost" v-model="post.password" type="password" name="password" id="postPassword" placeholder="密碼">
+            </div>
+            <div class="form-group" v-show="isProtectedPost">
+                <label for="postPassword">密碼</label>
+                <input v-model="post.password" type="password" name="password" id="postPassword" placeholder="密碼">
             </div>
             <div class="form-group">
                 <label for="postStatus">狀態</label>
@@ -87,7 +90,19 @@
         </div>
     </div>
 </template>
-
+<style lang="scss">
+.post-configure {
+  &__group {
+    margin-bottom: 0.5rem;
+  }
+  .form-group {
+    label:first-child {
+      width: 60px;
+      display: inline-block;
+    }
+  }
+}
+</style>
 <script>
 export default {
 

@@ -26,13 +26,13 @@ import PostTool from '@components/PostTool'
 
 export default {
     name: 'PoseEditor',
-    
+
     props: ['post'],
 
     mixins: [
         EditorHotKeyMixin
     ],
-    
+
     components: {
         PostTool
     },
@@ -64,8 +64,8 @@ export default {
 </script>
 
 <style lang="scss">
-
-@import '../../sass/variables';
+@import "../../sass/variables";
+@import "../../sass/mixins";
 
 .post-editor {
   width: 100%;
@@ -75,8 +75,8 @@ export default {
   align-items: stretch;
   justify-content: center;
   &__tool {
-      flex: none;
-      width: 100%;
+    flex: none;
+    width: 100%;
   }
   &__paper {
     flex: 1 0 50%;
@@ -92,14 +92,24 @@ export default {
       line-height: 1.5;
     }
 
-    input, textarea {
-        background-color: transparent;
+    input,
+    textarea {
+      background-color: transparent;
     }
   }
   &__preview {
     flex: 1 0 50%;
     padding-left: 15px;
     border-left: 1px dashed $primary;
+  }
+}
+
+@include media("md") {
+  .post-editor {
+    min-width: 100%;
+    &__paper {
+        padding: 0;
+    }
   }
 }
 </style>

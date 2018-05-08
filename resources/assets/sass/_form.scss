@@ -1,7 +1,26 @@
+
+input {
+    line-height: 1.5;
+    padding: .25rem .5rem;
+}
+
+input, select, textarea, button {
+    border-radius: 2px;
+    font-size: $font-size-base;
+    line-height: 1.1;
+    font-family: $font-family-sans-serif;
+}
+
+button, input[type="button"] {
+    cursor: pointer;
+    color: $gray-200;
+    border-radius: 2px;
+    background-color: $body-bg;
+    &:hover {
+        color: $dark;
+    }
+}
+
 .form-group {
     margin-bottom: .75rem;
-    label:first-child {
-        width: 100px;
-        display: inline-block;
-    }
 }
