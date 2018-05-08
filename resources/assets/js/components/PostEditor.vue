@@ -59,6 +59,7 @@ export default {
 
 <style lang="scss">
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .post-editor {
   width: 100%;
@@ -94,6 +95,15 @@ export default {
     flex: 1 0 50%;
     padding-left: 15px;
     border-left: 1px dashed $primary;
+  }
+}
+
+@include media("md") {
+  .post-editor {
+    min-width: 100%;
+    &__paper {
+        padding: 0;
+    }
   }
 }
 </style>

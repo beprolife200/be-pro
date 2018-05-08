@@ -13,3 +13,16 @@
         width: 100%;
     }
 }
+
+@include media('md') {
+    .container {
+        width: map-get($screen-size, 'md');
+    }
+
+    .row {
+        padding: 0 10px;
+        .row {
+            padding: 0 5px;
+        }
+    }
+}

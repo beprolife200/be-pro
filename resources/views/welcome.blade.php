@@ -8,7 +8,7 @@
             <div class="offset-3 col-6">
                 <ul class="list-group list-group-flush">
                     @foreach ($posts as $post)
-                    <li class="list-group-item d-flex justify-content-between">
+                    <li class="list-group-item d-flex justify-content-between mb-2">
                         <a href="{{ $post->path() }}">{{$post->title}}</a>
                         <span>
                             <small>created at {{ $post->created_at->diffForHumans() }}</small>

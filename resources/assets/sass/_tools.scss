@@ -6,12 +6,12 @@
     }
 }
 
-@each $align in $flex-aligns {
-    .align-items-#{$align} {
-        align-items: $align !important;
+@each $key, $value  in $flex-aligns {
+    .align-items-#{$key} {
+        align-items: $value !important;
     }
-    .justify-content-#{$align} {
-        justify-content: $align !important;
+    .justify-content-#{$key} {
+        justify-content: $value !important;
     }
 }
 

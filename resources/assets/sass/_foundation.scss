@@ -25,6 +25,7 @@ body {
     flex-direction: column;
 }
 
+
 h1 {
     font-size: 2rem;
 }
@@ -57,11 +58,19 @@ h1, h2, h3, h4, h5, h6, p, hr, ul {
     margin: 0 0 1rem;
 }
 
-a {
-    color: $primary;
+a, .link {
+    padding: 0;
+    border: none;
+    line-height: 1;
+    display: inline;
+    color: lighten($primary, 5%);
     text-decoration: none;
+    font-size: $font-size-base;
+    background-color: transparent;
+    font-family: $font-family-sans-serif;
     &:hover {
         text-decoration: underline;
+        color: darken($primary, 5%);
     }
 }
 
@@ -70,4 +79,37 @@ hr {
     height: 1px;
     width: 100%;
     background-color: #eee;
+}
+
+@include media('md') {
+    body {
+        padding-top: 30px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+
+    }
+
+    h4 {
+        font-size: 1rem;
+
+    }
+
+    h5 {
+        font-size: 0.8rem;
+
+    }
+
+    h6 {
+        font-size: 0.6rem;
+    }
 }

@@ -58,6 +58,7 @@ export default {
 
 <style lang="scss">
 @import "../../sass/variables";
+@import "../../sass/mixins";
 .post-tool {
   width: 100%;
   position: relative;
@@ -91,6 +92,22 @@ export default {
     border-radius: 2px;
     box-shadow: 0 0 60px -10px #777;
     background: rgba(255, 255, 255, 0.99);
+  }
+}
+
+@include media("md") {
+  .post-tool {
+    &__bar {
+      padding: 0.75rem 0;
+    }
+    &__panel {
+        position: fixed;
+        top: 45px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 45px);
+        overflow: hidden;
+    }
   }
 }
 </style>
