@@ -27,9 +27,13 @@ Route::post('/posts', 'PostController@store')->name('post-store');
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('series', 'SeriesController@index');
-    Route::group(['prefix' => 'posts'], function () {
-        Route::get('{post}', 'PostController@getPost');
-        Route::post('', 'PostController@ajaxStore');
-        Route::put('{post}', 'PostController@ajaxUpdate');
-    });
+    Route::get('tags', 'TagController@index');
+    Route::post('tags', 'TagController@store');
+});
+    
+Route::group(['prefix' => 'api/posts'], function () {
+    Route::post('/', 'PostController@ajaxStore');
+    Route::get('/{post}', 'PostController@getPost');
+    Route::post('/{post}/tags/{tag}', 'PostController@attachTag');
+    Route::put('/{post}', 'PostController@ajaxUpdate');
 });

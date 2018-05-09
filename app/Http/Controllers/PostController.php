@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Parsedown;
 use BePro\Post\PostRepository;
 use BePro\Post\Post;
+use BePro\Tag\Tag;
 
 class PostController extends Controller
 {
@@ -35,6 +36,13 @@ class PostController extends Controller
         ]);
     }
 
+    public function attachTag(Post $post, Tag $tag)
+    {
+        $post->tags()->attach($tag);
+        $post->fresh();
+        return response()->json(['data' => $post]);
+    }
+
     public function ajaxUpdate()
     {
         $data = request()->all();
@@ -53,6 +61,7 @@ class PostController extends Controller
 
     public function getPost(Post $post)
     {
+        $post->load('tags');
         return response()->json(['data' => $post]);
     }
 }

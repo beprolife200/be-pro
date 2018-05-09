@@ -17,10 +17,15 @@
         <div class="post-editor__preview animated" v-show="preview">
             <markdown-parser v-model="post.content"></markdown-parser>
         </div>
+        <div style="position:fixed;top:0;left:0;width:100%;height:auto;">
+            <tag-panel @attach-tag="attachPostTag"></tag-panel>
+        </div>
     </div>
 </template>
+
 <script>
 
+import TagPanel from '@components/TagPanel'
 import EditorHotKeyMixin from '@mixins/EditorHotKeyMixin'
 import PostTool from '@components/PostTool'
 
@@ -34,7 +39,7 @@ export default {
     ],
 
     components: {
-        PostTool
+        PostTool, TagPanel
     },
 
     data() {
@@ -48,6 +53,12 @@ export default {
     },
 
     methods: {
+
+        attachPostTag(tag) {
+            axios.post(`/api/posts/${this.post.slug}/tags/${tag.id}`)
+                .then(res => console.log(res))
+                .then(() => this.$eventHub.$emit('alert', { level: 'success', message: '標籤新增成功', ms: 5000 }))
+        },
 
         updateMarkdownContent(content) {
             this.markdown.content = content
@@ -108,7 +119,7 @@ export default {
   .post-editor {
     min-width: 100%;
     &__paper {
-        padding: 0;
+      padding: 0;
     }
   }
 }

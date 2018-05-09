@@ -5,11 +5,20 @@
                 <slot name="close-btn"></slot>
             </span>
             <div class="post-tool__bar__btns">
-                <span class="post-tool__bar__btn post-tool__bar__btns__btn" @click="toggleConfigurePanel">
-                    <i class="fas fa-cog"></i>
-                </span>
                 <span class="post-tool__bar__btn post-tool__bar__btns__btn" @click="$emit('toggle-preview')">
                     <i :class="['fas', onPreview ? 'fa-eye' : 'fa-eye-slash']"></i>
+                </span>
+                <span class="post-tool__bar__btn post-tool__bar__btns__btn">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span class="post-tool__bar__btn post-tool__bar__btns__btn">
+                    <i class="fas fa-link"></i>
+                </span>
+                <span class="post-tool__bar__btn post-tool__bar__btns__btn">
+                    <i class="fas fa-tag"></i>
+                </span>
+                <span class="post-tool__bar__btn post-tool__bar__btns__btn" @click="toggleConfigurePanel">
+                    <i class="fas fa-cog"></i>
                 </span>
             </div>
         </div>
@@ -101,12 +110,12 @@ export default {
       padding: 0.75rem 0;
     }
     &__panel {
-        position: fixed;
-        top: 45px;
-        left: 0;
-        width: 100%;
-        height: calc(100% - 45px);
-        overflow: hidden;
+      position: fixed;
+      top: 45px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 45px);
+      overflow: hidden;
     }
   }
 }
