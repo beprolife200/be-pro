@@ -1,6 +1,5 @@
 // Fonts
 @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
-
 @import "~animate.css/animate.css";
 // Variables
 @import "variables";
@@ -9,9 +8,7 @@
 @import "grid";
 @import "form";
 @import "tools";
-
 @import "./pages/home";
-
 .notification-panel {
     position: fixed;
     bottom: 30px;
@@ -21,7 +18,7 @@
 
 .site-nav {
     flex: none;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     &__logo {
         width: 270px;
         height: 90px;
@@ -57,5 +54,13 @@
     align-self: flex-end;
     a {
         color: lighten($primary, 10%);
+    }
+}
+
+.post {
+    &__description {
+        border: 1px solid #ddd;
+        padding: 1rem;
+        margin: 1rem 20px 2rem;
     }
 }
