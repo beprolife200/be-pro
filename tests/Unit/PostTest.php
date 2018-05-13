@@ -71,4 +71,13 @@ class PostTest extends TestCase
                 ]
             ]);
     }
+
+    /** @test */
+    public function post_can_attach_tag()
+    {
+        $post = factory('BePro\Post\Post')->create();
+        $tag = factory('BePro\Tag\Tag')->create();
+        $this->json('POST', "/api/posts/{$post->slug}/tags/{$tag->id}")
+                ->assertStatus(200);
+    }
 }

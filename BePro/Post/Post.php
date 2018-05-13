@@ -18,6 +18,9 @@ class Post extends Model
 
         static::addGlobalScope('author', function ($builder) {
             $builder->with('author');
+            $builder->with('tags');
+            $builder->with('series');
+            $builder->with('videos');
         });
     }
 

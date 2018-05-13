@@ -108,7 +108,7 @@
 import { trigger } from '@js/utils'
 export default {
 
-    name: 'PostConfigure',
+    name: 'ConfigurePanel',
 
     props: {
         post: {

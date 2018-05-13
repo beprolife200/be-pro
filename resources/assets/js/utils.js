@@ -45,4 +45,3 @@ export function clone(val) {
 export function momentUTC8(timestamp) {
     return moment.utc(timestamp).utcOffset('+0800')
 }
-

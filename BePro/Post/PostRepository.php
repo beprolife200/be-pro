@@ -21,4 +21,9 @@ class PostRepository
         $post->update($data);
         return $post;
     }
+
+    static public function postAttachTag(Post $post, $tag)
+    {
+        // 
+    }
 }

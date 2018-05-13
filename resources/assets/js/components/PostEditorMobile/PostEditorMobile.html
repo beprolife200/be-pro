@@ -1,0 +1,32 @@
+<div class="post-editor--mobile">
+
+    <div class="post-editor--mobile__body">
+        <div class="paper">
+            <textarea ref="editor" v-model="post.content" @keyup.esc="$emit('close')" @keyup="autoSave" />
+        </div>
+
+        <div class="preview animated" v-show="preview">
+            <markdown-parser v-model="post.content"></markdown-parser>
+        </div>
+    </div>
+    <div class="post-editor--mobile__footer">
+        <div v-show="activePanel" class="panels">
+            <div class="d-flex justify-content-end">
+                <span class="pointer" @click="togglePanel(null)">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+            <tag-panel :post="post" v-show="activePanel === 'tag-panel'"></tag-panel>
+            <configure-panel v-show="activePanel === 'configure-panel'" :post="post"></configure-panel>
+            <video-panel></video-panel>
+            <reference-panel></reference-panel>
+        </div>
+        <post-tool-bar
+            :post="post"
+            :on-preview="preview"
+            :active-panel="activePanel"
+            @toggle-preview="preview = !preview"
+            @toggle-panel="togglePanel"
+        ></post-tool-bar>
+    </div>
+</div>

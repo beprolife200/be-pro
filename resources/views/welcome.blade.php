@@ -2,6 +2,13 @@
 @section('page-name', 'page__post-create') 
 @section('content')
 <div class="container">
+        <div class="row d-flex justify-content-end mb-3">
+            @if(Auth::guest())
+                <a href="{{ route('login') }}">登入</a>
+            @else
+                <a href="{{ route('home') }}">Home</a>
+            @endif
+        </div>
     <div class="row">
 
         <div class="row">

@@ -7,7 +7,7 @@
             <div class="text-right">
                 <span class="pointer" @click="cancelNewPost"><i class="fa fa-times"></i></span>
             </div>
-            <post-configure objective="create" :post="newPost"></post-configure>
+            <configure-panel objective="create" :post="newPost"></configure-panel>
         </div>
     </div>
     <div class="row">
@@ -34,9 +34,8 @@
 
     <transition enter-active-class="fadeIn" leave-active-class="fadeOut" :duration="300">
         <div ref="PostEditorContainer" class="editor-container animated" v-show="activePost">
-            <div class="row" v-if="activePost">
-                <post-editor :post="activePost" @close="closeEditor"></post-editor>
-            </div>
+            <post-editor-desktop v-if="activePost && device === 'desktop'" :post="activePost"></post-editor-desktop>
+            <post-editor-mobile v-if="activePost && device === 'mobile'" :post="activePost"></post-editor-mobile>
         </div>
     </transition>
 </div>
