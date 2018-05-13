@@ -43,7 +43,7 @@
         height: 100%;
         z-index: +2;
         position: absolute;
-        background-color: rgba(255, 255, 255, .9);
+        background-color: rgba(255, 255, 255, 1);
     }
 
     .panels {
@@ -53,6 +53,6 @@
         position: relative;
         max-height: 50vh;
         border-top: 1px solid $primary;
-        background-color: rgba(255, 255, 255, .9);
+        background-color: rgba(255, 255, 255, 1);
     }
 }

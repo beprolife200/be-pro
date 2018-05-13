@@ -25,7 +25,6 @@ body {
     flex-direction: column;
 }
 
-
 h1 {
     font-size: 2rem;
 }
@@ -50,12 +49,18 @@ h6 {
     font-size: .75rem;
 }
 
-p {
-    font-size: 1rem;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 .2rem;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul {
-    margin: 0 0 .3rem;
+p {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+}
+
+ul {
+    margin: 0 0 1rem;
+    padding-left: 2rem;
 }
 
 a, .link {
@@ -79,7 +84,7 @@ hr {
     height: 1px;
     width: 100%;
     margin: 0 0 1rem;
-    background-color: #eee;
+    background-color: #ddd;
 }
 
 img {
