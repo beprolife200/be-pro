@@ -22,7 +22,7 @@
     </main>
 
     <footer class="site-footer text-center">
-        Copyright &copy; 2018. <a href="#">BePro.Life</a> 
+        Copyright &copy; 2018. <a href="#">BePro.Life</a>
     </footer>
 
     <div class="notification-panel">

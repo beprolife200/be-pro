@@ -26,6 +26,14 @@ class PostController extends Controller
         return redirect()->route('post-show', ['post' => $post->slug]);
     }
 
+    public function getPost(Post $post)
+    {
+        $post->load('tags');
+        return response()->json([
+            'data' => $post
+        ]);
+    }
+
     public function ajaxStore()
     {
         $data = request()->all();
@@ -39,8 +47,16 @@ class PostController extends Controller
     public function attachTag(Post $post, Tag $tag)
     {
         $post->tags()->attach($tag);
-        $post->fresh();
-        return response()->json(['data' => $post]);
+        return response()->json(['data' => $tag]);
+    }
+    
+    public function removeTag(Post $post, Tag $tag)
+    {
+        $post->tags()->detach($tag->id);
+        return response()->json([
+            'message' => '標籤移除成功。',
+            'data' => null
+        ]);
     }
 
     public function ajaxUpdate()
@@ -48,7 +64,7 @@ class PostController extends Controller
         $data = request()->all();
         $post = $this->postRepository->updatePost($data);
         return response()->json([
-            'message' => 'update post success.',
+            'message' => '文章更新成功。',
             'data' => $post
         ]);
     }
@@ -57,11 +73,5 @@ class PostController extends Controller
     {
         $markdown = (new Parsedown)->setMarkupEscaped(true)->text($post->content);
         return view('post.show', compact('post', 'markdown'));
-    }
-
-    public function getPost(Post $post)
-    {
-        $post->load('tags');
-        return response()->json(['data' => $post]);
     }
 }

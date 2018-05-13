@@ -1,8 +1,9 @@
 
 
 import Post from '@classies/Post'
-import PostEditor from '@components/PostEditor'
-import PostConfigure from '@components/PostConfigure'
+import ConfigurePanel from '@components/ConfigurePanel'
+import PostEditorDesktop from '@components/PostEditorDesktop/PostEditorDesktop'
+import PostEditorMobile from '@components/PostEditorMobile/PostEditorMobile'
 
 new Vue({
 
@@ -11,10 +12,13 @@ new Vue({
     name: 'Home',
 
     components: {
-        PostEditor, PostConfigure
+        ConfigurePanel,
+        PostEditorMobile,
+        PostEditorDesktop
     },
 
     data: {
+        device: 'desktop',
         newPost: null,
         activePost: null,
         editorBackgroundImage: 'https://s3-ap-northeast-1.amazonaws.com/bepro.images/white-paper.jpg'
@@ -22,9 +26,28 @@ new Vue({
 
     created() {
         this.setEditorBackground(this.editorBackgroundImage)
+        this.$eventHub.$on('close-editor', this.closeEditor)
+    },
+
+    mounted() {
+        this.trackDevice()
     },
 
     methods: {
+
+        trackDevice() {
+            this.checkDevice()
+            window.addEventListener('resize', () => {
+                this.checkDevice()
+            }, { passive: false })
+        },
+
+        checkDevice() {
+            const isMobile = window.matchMedia("(max-width: 1000px)").matches
+            const device = isMobile ? 'mobile' : 'desktop'
+            this.device = device
+        },
+
         setEditorBackground(imageURL) {
             const request = new Request(imageURL)
             const options = {

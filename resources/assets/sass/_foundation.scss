@@ -81,6 +81,10 @@ hr {
     background-color: #eee;
 }
 
+img {
+    width: 100%;
+}
+
 @include media('md') {
     body {
         padding-top: 30px;

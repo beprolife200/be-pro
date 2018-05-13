@@ -35,5 +35,6 @@ Route::group(['prefix' => 'api/posts'], function () {
     Route::post('/', 'PostController@ajaxStore');
     Route::get('/{post}', 'PostController@getPost');
     Route::post('/{post}/tags/{tag}', 'PostController@attachTag');
+    Route::delete('/{post}/tags/{tag}', 'PostController@removeTag');
     Route::put('/{post}', 'PostController@ajaxUpdate');
 });

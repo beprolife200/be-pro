@@ -106,7 +106,7 @@
 <script>
 export default {
 
-    name: 'PostConfigure',
+    name: 'ConfigurePanel',
 
     props: {
         post: {

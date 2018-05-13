@@ -21,6 +21,21 @@ button, input[type="button"] {
     }
 }
 
+select,
+[type="text"],
+[type="number"],
+[type="password"] {
+    height: 30px;
+    line-height: 30px;
+    @include input-base;
+}
+
+textarea {
+    resize: none;
+    overflow-y: auto;
+    @include input-base;
+}
+
 .form-group {
     margin-bottom: .75rem;
 }

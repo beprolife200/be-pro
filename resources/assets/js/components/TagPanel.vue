@@ -1,62 +1,55 @@
 <template>
-    <form action="#" @submit.prevent="onSubmit">
-        <fieldset>
-            <div class="form-group">
-                <label for="tagNameInput">標籤</label>
-                <input v-model="tag.name" id="tagNameInput" name="name" type="text" list="tagList">
-                <datalist id="tagList" v-if="matchTags.length">
-                    <option v-for="tag in matchTags" :key="tag.id" :value="tag.name" />
-                </datalist>
+    <div class="tag-panel">
+        <tag-creater @attach-tag="attachTag"></tag-creater>
+        <hr>
+        <div class="tag-panel__tags">
+            <div>以標籤</div>
+            <div>
+                <tag v-for="(tag, index) in post.tags" :key="index" :tag="tag" @remove="removeTag" />
             </div>
-        </fieldset>
-    </form>
+        </div>
+    </div>
 </template>
 
-<script>
+<style lang="scss">
+.tag-panel {
+    &__tags {
 
+    }
+}
+</style>
+
+
+<script>
+import Tag from '@components/Tag'
+import { alert } from '@js/utils'
+import TagCreater from '@components/TagCreater'
 export default {
 
     name: 'TagPanel',
 
-    data() {
-        return {
-            tags: [],
-            tag: {
-                name: ''
-            }
-        }
+    components: {
+        TagCreater, Tag
     },
 
-    computed: {
-        matchTags() {
-            if (this.tags.length === 0) {
-                return []
-            }
-            const tags = this.tags.filter(tag => {
-                return tag.name.toLowerCase().includes(this.tag.name.toLowerCase())
-            })
-            return tags.length > 5 ? tags.slice(0, 4) : tags
-        }
-    },
-
-    created() {
-        this.getTags('/api/tags')
-    },
+    props: ['post'],
 
     methods: {
-        getTags() {
-            return axios.get('/api/tags')
-                .then(res => this.tags = res.data.data)
+
+        attachTag(tag) {
+            axios.post(`/api/posts/${this.post.slug}/tags/${tag.id}`)
+                .then(res => {
+                    this.post.tags.push(res.data.data)
+                    alert('標籤新增成功', 'success', 5000)
+                })
         },
 
-        onSubmit() {
-            axios.post('/api/tags', { tag: this.tag })
+        removeTag(tag) {
+            axios.delete(`/api/posts/${this.post.slug}/tags/${tag.id}`)
                 .then(res => {
-                    const tag = res.data.data
-                    this.tags.push(tag)
-                    return tag
+                    this.post.tags = this.post.tags.filter(t => t !== tag)
+                    alert(res.data.message, 'success', 5000)
                 })
-                .then(tag => this.$emit('attach-tag', tag))
         }
     }
 }

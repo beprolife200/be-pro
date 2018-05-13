@@ -13,3 +13,9 @@
         }
     }
 }
+
+@mixin input-base() {
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid lighten($primary, 20%);
+}
